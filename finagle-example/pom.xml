@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>test-finagle</artifactId>
+    <artifactId>test-finagle-example</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>

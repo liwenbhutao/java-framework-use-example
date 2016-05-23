@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>test-reactor</artifactId>
+    <artifactId>test-reactor-example</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>

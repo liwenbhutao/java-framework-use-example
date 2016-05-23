@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>test-akka</artifactId>
+    <artifactId>test-akka-example</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
