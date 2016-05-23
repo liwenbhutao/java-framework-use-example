@@ -26,5 +26,6 @@
         <module>reactor-example</module>
         <module>underflow-example</module>
         <module>apache-commons-example</module>
+        <module>guava-example</module>
     </modules>
 </project>
