@@ -24,5 +24,6 @@
         <module>finagle</module>
         <module>jmeter</module>
         <module>reactor</module>
+        <module>underflow</module>
     </modules>
 </project>
