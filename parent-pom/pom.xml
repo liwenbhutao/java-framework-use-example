@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ht</groupId>
+        <artifactId>ht-parent-pom</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>test-parent-pom</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>ht Parent Project</name>
+
+    <properties>
+        <ht.project.version>1.0.0-SNAPSHOT</ht.project.version>
+
+        <common.util.version>${ht.project.version}</common.util.version>
+        <common.util.servlet.version>${ht.project.version}</common.util.servlet.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.ht</groupId>
+                <artifactId>ht-common-util</artifactId>
+                <version>${common.util.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ht</groupId>
+                <artifactId>ht-common-util-servlet</artifactId>
+                <version>${common.util.servlet.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
