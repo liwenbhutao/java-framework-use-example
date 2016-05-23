@@ -25,5 +25,6 @@
         <module>jmeter</module>
         <module>reactor</module>
         <module>underflow</module>
+        <module>apache-commons-example</module>
     </modules>
 </project>
