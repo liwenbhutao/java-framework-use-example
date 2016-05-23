@@ -17,14 +17,14 @@
     <modules>
         <module>parent-pom</module>
         <module>common</module>
-        <module>vertx</module>
-        <module>akka</module>
-        <module>netty</module>
-        <module>nifty</module>
-        <module>finagle</module>
-        <module>jmeter</module>
-        <module>reactor</module>
-        <module>underflow</module>
+        <module>vertx-example</module>
+        <module>akka-example</module>
+        <module>netty-example</module>
+        <module>nifty-example</module>
+        <module>finagle-example</module>
+        <module>jmeter-example</module>
+        <module>reactor-example</module>
+        <module>underflow-example</module>
         <module>apache-commons-example</module>
     </modules>
 </project>
