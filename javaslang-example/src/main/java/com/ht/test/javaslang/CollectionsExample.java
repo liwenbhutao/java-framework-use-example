@@ -38,17 +38,17 @@ public class CollectionsExample implements Runnable {
                 Case(isIn("-h", "--help"), javaslang.API.run(this::displayHelp)),
                 Case(isIn("-v", "--version"), javaslang.API.run(this::displayVersion)),
                 Case($(), javaslang.API.run(() -> {
-                    throw new IllegalArgumentException("dafa");
+                    //throw new IllegalArgumentException("dafa");
                 }))
         );
     }
 
     private void displayHelp() {
-
+        log.info("displayHelp");
     }
 
     private void displayVersion() {
-
+        log.info("displayVersion");
     }
 
     private void useList() {

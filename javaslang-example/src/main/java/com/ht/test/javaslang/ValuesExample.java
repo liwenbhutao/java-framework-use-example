@@ -28,7 +28,7 @@ public class ValuesExample implements Runnable {
 
         log.info("validation valid result:{},person:{}", valid.isValid(), valid.get());
         final Validation<List<String>, Person> invalid = personValidator.validatePerson("John? Doe!4", -1);
-        log.info("validation invalid result:{},error:{}", invalid.isValid(), valid.getError());
+        log.info("validation invalid result:{},error:{}", invalid.isValid(), invalid.getError());
     }
 
     private void useEither() {
