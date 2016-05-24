@@ -27,5 +27,6 @@
         <module>underflow-example</module>
         <module>apache-commons-example</module>
         <module>guava-example</module>
+        <module>javaslang-example</module>
     </modules>
 </project>
