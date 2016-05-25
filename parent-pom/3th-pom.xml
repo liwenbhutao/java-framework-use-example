@@ -62,6 +62,7 @@
         <disruptor.version>3.3.4</disruptor.version>
         <mysql.connector.java.version>6.0.2</mysql.connector.java.version>
         <immutables.version>2.2</immutables.version>
+        <archaius2.version>2.0.5</archaius2.version>
     </properties>
 
     <dependencyManagement>
@@ -1153,6 +1154,56 @@
                 <artifactId>javaslang</artifactId>
                 <version>2.0.2</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>2.2.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz-jobs</artifactId>
+                <version>2.2.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius2-core</artifactId>
+                <version>${archaius2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius2-guice</artifactId>
+                <version>${archaius2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius2-commons-configuration</artifactId>
+                <version>${archaius2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius2-typesafe</artifactId>
+                <version>${archaius2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius2-api</artifactId>
+                <version>${archaius2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius2-persisted2</artifactId>
+                <version>${archaius2.version}</version>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 
