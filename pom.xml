@@ -28,5 +28,6 @@
         <module>guava-example</module>
         <module>javaslang-example</module>
         <module>quartz-example</module>
+        <module>archaius-example</module>
     </modules>
 </project>
