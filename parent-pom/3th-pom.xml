@@ -63,6 +63,7 @@
         <mysql.connector.java.version>6.0.2</mysql.connector.java.version>
         <immutables.version>2.2</immutables.version>
         <archaius2.version>2.0.5</archaius2.version>
+        <rocketmq.version>3.4.9</rocketmq.version>
     </properties>
 
     <dependencyManagement>
@@ -1203,6 +1204,12 @@
                 <version>${archaius2.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.alibaba.rocketmq</groupId>
+                <artifactId>rocketmq-all</artifactId>
+                <version>${rocketmq.version}</version>
+                <type>pom</type>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
