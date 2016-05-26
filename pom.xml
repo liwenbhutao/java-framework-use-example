@@ -29,5 +29,6 @@
         <module>javaslang-example</module>
         <module>quartz-example</module>
         <module>archaius-example</module>
+        <module>rocketmq-example</module>
     </modules>
 </project>

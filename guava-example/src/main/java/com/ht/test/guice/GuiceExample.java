@@ -13,7 +13,7 @@ import com.ht.test.guice.support.AService1;
 public class GuiceExample implements Runnable {
     @Override
     public void run() {
-        Injector injector = Guice.createInjector(new AModule());
+        final Injector injector = Guice.createInjector(new AModule());
         final AService aService = injector.getInstance(AService.class);
         aService.run();
 
