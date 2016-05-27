@@ -296,8 +296,14 @@
 
             <dependency>
                 <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-amqp</artifactId>
+                <version>1.5.6.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
                 <artifactId>spring-rabbit</artifactId>
-                <version>1.5.1.RELEASE</version>
+                <version>1.5.6.RELEASE</version>
             </dependency>
 
             <dependency>
@@ -1233,6 +1239,13 @@
                 <artifactId>rocketmq-remoting</artifactId>
                 <version>${rocketmq.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.rabbitmq</groupId>
+                <artifactId>amqp-client</artifactId>
+                <version>3.6.2</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>
