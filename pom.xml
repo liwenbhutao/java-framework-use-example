@@ -30,5 +30,6 @@
         <module>quartz-example</module>
         <module>archaius-example</module>
         <module>rocketmq-example</module>
+        <module>rabbitmq-example</module>
     </modules>
 </project>
