@@ -64,6 +64,16 @@ public class Server {
         log.info("receive response:" + response);
     }
 
+    private IThriftServer.Client makeNiftyClient(final NiftyClient niftyClient)
+            throws TTransportException, InterruptedException {
+        InetSocketAddress address = new InetSocketAddress("localhost", 8080);
+        FramedClientConnector framedClientConnector = new FramedClientConnector(address);
+        TTransport transport = niftyClient.connectSync(IThriftServer.Client.class, framedClientConnector);
+        //TTransport transport = niftyClient.connectSync(address);
+        TBinaryProtocol tp = new TBinaryProtocol(transport);
+        return new IThriftServer.Client(tp);
+    }
+
     public static class NettyConfigProvider implements Provider<NettyServerConfig> {
         @Override
         public NettyServerConfig get() {
@@ -73,15 +83,5 @@ public class Server {
             nettyConfigBuilder.getSocketChannelConfig().setTcpNoDelay(true);
             return nettyConfigBuilder.build();
         }
-    }
-
-    private IThriftServer.Client makeNiftyClient(final NiftyClient niftyClient)
-            throws TTransportException, InterruptedException {
-        InetSocketAddress address = new InetSocketAddress("localhost", 8080);
-        FramedClientConnector framedClientConnector = new FramedClientConnector(address);
-        TTransport transport = niftyClient.connectSync(IThriftServer.Client.class, framedClientConnector);
-        //TTransport transport = niftyClient.connectSync(address);
-        TBinaryProtocol tp = new TBinaryProtocol(transport);
-        return new IThriftServer.Client(tp);
     }
 }

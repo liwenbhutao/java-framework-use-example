@@ -12,7 +12,6 @@ import java.util.Date;
 public class BaseEntity {
     /**
      * 主键id
-     *
      */
     protected long id;
     /**

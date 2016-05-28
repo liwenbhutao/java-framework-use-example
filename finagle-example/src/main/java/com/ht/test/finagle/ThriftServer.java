@@ -5,7 +5,6 @@ import com.twitter.finagle.ListeningServer;
 import com.twitter.finagle.Thrift;
 import com.twitter.util.Await;
 import com.twitter.util.Future;
-import org.apache.commons.lang3.RandomStringUtils;
 
 /**
  * Created by hutao on 16/5/9.
@@ -14,13 +13,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 public final class ThriftServer {
 
     private ThriftServer() {
-    }
-
-    public static class HelloImpl implements Hello.ServiceIface {
-        @Override
-        public Future<String> hi() {
-            return Future.value("hi");
-        }
     }
 
     /**
@@ -34,5 +26,12 @@ public final class ThriftServer {
         ListeningServer server = Thrift.server().serveIface("localhost:8080", impl);
         Await.ready(server);
         //#thriftserverapi
+    }
+
+    public static class HelloImpl implements Hello.ServiceIface {
+        @Override
+        public Future<String> hi() {
+            return Future.value("hi");
+        }
     }
 }

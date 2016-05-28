@@ -5,7 +5,6 @@ import com.twitter.finagle.Thrift;
 import com.twitter.util.Await;
 import com.twitter.util.Function;
 import com.twitter.util.Future;
-import scala.Function1;
 import scala.runtime.BoxedUnit;
 
 /**
