@@ -21,7 +21,7 @@ public class ServerConfigTest {
 
     @Test
     public void testName1() throws Exception {
-        final ServerConfig config = ConfigReader.loadConfig(ServerConfig.class,"file:/Users/hutao/Downloads/a.properties");
+        final ServerConfig config = ConfigReader.loadConfig(ServerConfig.class, "file:/Users/hutao/Downloads/a.properties");
         config.list(System.out);
 
     }

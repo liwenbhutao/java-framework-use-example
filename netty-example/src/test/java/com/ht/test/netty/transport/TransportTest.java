@@ -42,6 +42,8 @@ import java.util.concurrent.Executors;
  */
 @Slf4j
 public class TransportTest {
+    private ObjectPool<RpcNettyClient> rpcNettyClientObjectPool;
+
     @Test
     public void startServer() throws Exception {
         final Map<EnumBizType, ServerCommandHandler> handlerMap = Maps.newHashMap();
@@ -75,9 +77,6 @@ public class TransportTest {
                                 .setRemoteAddress(new InetSocketAddress("127.0.0.1", 9998)))),
                 genericObjectPoolConfig);
     }
-
-    private ObjectPool<RpcNettyClient> rpcNettyClientObjectPool;
-
 
     @Test
     public void startUtsServer() throws Exception {
@@ -161,15 +160,6 @@ public class TransportTest {
                 new MsgChannelInitializer(new SimpleChannelHandler(), new CommandCodec()));
         server.start();
 
-    }
-
-    @ChannelHandler.Sharable
-    private static class SimpleChannelHandler extends ChannelInboundHandlerAdapter {
-        @Override
-        public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            ctx.channel().writeAndFlush(msg);
-            //ctx.channel().writeAndFlush(msg);
-        }
     }
 
     @Test
@@ -292,5 +282,14 @@ public class TransportTest {
 
     @Test
     public void testName() throws Exception {
+    }
+
+    @ChannelHandler.Sharable
+    private static class SimpleChannelHandler extends ChannelInboundHandlerAdapter {
+        @Override
+        public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+            ctx.channel().writeAndFlush(msg);
+            //ctx.channel().writeAndFlush(msg);
+        }
     }
 }

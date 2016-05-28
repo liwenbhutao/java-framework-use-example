@@ -13,19 +13,6 @@ import org.apache.commons.cli.*;
 public class CliExample implements Runnable {
     private final String[] args;
 
-    @Override
-    public void run() {
-        log.info("run cli example");
-        final CommandLine commandLine = buildCommandline(args);
-        if (commandLine != null) {
-            log.info("cli is not null");
-            for (final Option option : commandLine.getOptions()) {
-                log.info("command line arg [{}] value:{}", option.getLongOpt(), commandLine.getOptionValue(option.getOpt(), ""));
-            }
-        }
-
-    }
-
     public static CommandLine buildCommandline(String[] args) {
         final Options options = buildOptions();
 
@@ -71,5 +58,18 @@ public class CliExample implements Runnable {
         opt.setRequired(false);
         options.addOption(opt);
         return options;
+    }
+
+    @Override
+    public void run() {
+        log.info("run cli example");
+        final CommandLine commandLine = buildCommandline(args);
+        if (commandLine != null) {
+            log.info("cli is not null");
+            for (final Option option : commandLine.getOptions()) {
+                log.info("command line arg [{}] value:{}", option.getLongOpt(), commandLine.getOptionValue(option.getOpt(), ""));
+            }
+        }
+
     }
 }

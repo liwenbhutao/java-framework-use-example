@@ -1,4 +1,5 @@
-import com.typesafe.config.*;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 
 // Whenever you write a library, allow people to supply a Config but
 // also default to ConfigFactory.load if they don't supply one.

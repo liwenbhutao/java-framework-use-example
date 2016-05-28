@@ -32,6 +32,41 @@ import java.util.Set;
  */
 public class Example {
 
+    public static void main(String[] args) {
+        //new Example().example1(Vertx.vertx());
+        Config hazelcastConfig = new Config();
+
+        // Now set some stuff on the config (omitted)
+
+        ClusterManager mgr = new HazelcastClusterManager(hazelcastConfig);
+
+        VertxOptions options = new VertxOptions().setClusterManager(mgr);
+        Vertx.clusteredVertx(options, res -> {
+            if (res.succeeded()) {
+                Vertx vertx = res.result();
+            } else {
+                // failed!
+            }
+        });
+    }
+
+    private static void tcpEventBus() {
+        final Vertx vertx = Vertx.vertx();
+        TcpEventBusBridge bridge = TcpEventBusBridge.create(
+                vertx,
+                new io.vertx.ext.bridge.BridgeOptions()
+                        .addInboundPermitted(new io.vertx.ext.bridge.PermittedOptions().setAddress("in"))
+                        .addOutboundPermitted(new io.vertx.ext.bridge.PermittedOptions().setAddress("out")));
+
+        bridge.listen(7000, res -> {
+            if (res.succeeded()) {
+                // succeed...
+            } else {
+                // fail...
+            }
+        });
+    }
+
     public void example1(Vertx vertx) {
         HttpServer server = vertx.createHttpServer();
 
@@ -126,7 +161,6 @@ public class Example {
         });
 
     }
-
 
     public void example5(Router router) {
 
@@ -448,11 +482,6 @@ public class Example {
         });
     }
 
-    interface SomeLegacyService {
-
-        void doSomethingThatBlocks();
-    }
-
     public void example21(Router router) {
 
         router.get("/some/path").handler(routingContext -> {
@@ -689,7 +718,6 @@ public class Example {
 
     }
 
-
     public void example37(Vertx vertx, AuthProvider authProvider, Router router) {
 
         router.route().handler(CookieHandler.create());
@@ -813,7 +841,6 @@ public class Example {
         router.route("/somepath/").failureHandler(ErrorHandler.create());
 
     }
-
 
     public void example42(Router router) {
 
@@ -1112,39 +1139,9 @@ public class Example {
         });
     }
 
-    public static void main(String[] args) {
-        //new Example().example1(Vertx.vertx());
-        Config hazelcastConfig = new Config();
+    interface SomeLegacyService {
 
-        // Now set some stuff on the config (omitted)
-
-        ClusterManager mgr = new HazelcastClusterManager(hazelcastConfig);
-
-        VertxOptions options = new VertxOptions().setClusterManager(mgr);
-        Vertx.clusteredVertx(options, res -> {
-            if (res.succeeded()) {
-                Vertx vertx = res.result();
-            } else {
-                // failed!
-            }
-        });
-    }
-
-    private static void tcpEventBus() {
-        final Vertx vertx = Vertx.vertx();
-        TcpEventBusBridge bridge = TcpEventBusBridge.create(
-        vertx,
-                new io.vertx.ext.bridge.BridgeOptions()
-                        .addInboundPermitted(new io.vertx.ext.bridge.PermittedOptions().setAddress("in"))
-                        .addOutboundPermitted(new io.vertx.ext.bridge.PermittedOptions().setAddress("out")));
-
-        bridge.listen(7000, res -> {
-            if (res.succeeded()) {
-                // succeed...
-            } else {
-                // fail...
-            }
-        });
+        void doSomethingThatBlocks();
     }
 }
 

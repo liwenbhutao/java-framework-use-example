@@ -1,5 +1,7 @@
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigException;
+import com.typesafe.config.ConfigFactory;
 import org.testng.annotations.Test;
-import com.typesafe.config.*;
 
 /**
  * Created by hutao on 16/5/21.

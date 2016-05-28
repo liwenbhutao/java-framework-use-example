@@ -2,7 +2,6 @@ package com.ht.test.reactor;
 
 import com.ht.test.reactor.disruptor.LogEvent;
 import com.ht.test.reactor.disruptor.LogEventFactory;
-import com.ht.test.reactor.disruptor.LogEventHandler;
 import com.lmax.disruptor.BlockingWaitStrategy;
 import com.lmax.disruptor.EventTranslator;
 import com.lmax.disruptor.dsl.Disruptor;

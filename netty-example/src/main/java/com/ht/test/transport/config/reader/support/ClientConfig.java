@@ -7,5 +7,5 @@ import org.aeonbits.owner.Config;
  * 上午9:32
  */
 @Config.Sources("${configPropertiesFilePath}")
-public interface ClientConfig extends Config{
+public interface ClientConfig extends Config {
 }

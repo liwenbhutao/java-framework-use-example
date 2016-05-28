@@ -58,6 +58,7 @@ public class BaseResponse {
 
     /**
      * 构造成功报文builder
+     *
      * @param message
      * @return
      */

@@ -5,9 +5,6 @@ package com.yz.bourse.common.constant;
  * 下午6:12
  */
 public final class TimeConstant {
-    private TimeConstant() {
-    }
-
     /**
      * 秒
      */
@@ -24,4 +21,7 @@ public final class TimeConstant {
      * 日
      */
     public static final long DAY = 24 * HOUR;
+
+    private TimeConstant() {
+    }
 }

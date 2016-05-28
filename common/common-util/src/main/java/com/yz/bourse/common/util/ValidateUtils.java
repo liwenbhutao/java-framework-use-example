@@ -54,6 +54,7 @@ public final class ValidateUtils {
         ZONE_NUM.put(82, "澳门");
         ZONE_NUM.put(91, "外国");
     }
+
     private ValidateUtils() {
     }
 
