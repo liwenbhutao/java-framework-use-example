@@ -64,6 +64,7 @@
         <immutables.version>2.2</immutables.version>
         <archaius2.version>2.0.5</archaius2.version>
         <rocketmq.version>3.4.9</rocketmq.version>
+        <harpc.version>1.2</harpc.version>
     </properties>
 
     <dependencyManagement>
@@ -1246,6 +1247,11 @@
                 <version>3.6.2</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.baifendian</groupId>
+                <artifactId>harpc</artifactId>
+                <version>${harpc.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

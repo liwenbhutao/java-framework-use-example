@@ -31,5 +31,6 @@
         <module>archaius-example</module>
         <module>rocketmq-example</module>
         <module>rabbitmq-example</module>
+        <module>harpc-example</module>
     </modules>
 </project>
