@@ -23,6 +23,7 @@
         <spring.version>4.2.6.RELEASE</spring.version>
         <jackson.version>2.7.4</jackson.version>
         <httpcomponents.version>4.5.2</httpcomponents.version>
+        <httpcore.version>4.4.4</httpcore.version>
         <shiro.version>1.2.4</shiro.version>
         <aspectj.version>1.8.9</aspectj.version>
         <lucene.version>6.0.0</lucene.version>
@@ -64,6 +65,7 @@
         <immutables.version>2.2</immutables.version>
         <archaius2.version>2.0.5</archaius2.version>
         <rocketmq.version>3.4.9</rocketmq.version>
+        <harpc.version>1.2</harpc.version>
     </properties>
 
     <dependencyManagement>
@@ -554,7 +556,7 @@
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpcore</artifactId>
-                <version>${httpcomponents.version}</version>
+                <version>${httpcore.version}</version>
             </dependency>
 
             <dependency>
@@ -1246,6 +1248,11 @@
                 <version>3.6.2</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.baifendian</groupId>
+                <artifactId>harpc</artifactId>
+                <version>${harpc.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
