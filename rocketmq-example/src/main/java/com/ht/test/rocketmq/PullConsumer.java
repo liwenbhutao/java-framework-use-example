@@ -6,7 +6,6 @@ import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.common.message.MessageExt;
 import com.alibaba.rocketmq.common.message.MessageQueue;
 import com.alibaba.rocketmq.common.protocol.heartbeat.MessageModel;
-import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -25,34 +24,42 @@ public class PullConsumer {
         final DefaultMQPullConsumer consumer = new DefaultMQPullConsumer("consumerGroup1");
         consumer.setNamesrvAddr("127.0.0.1:9876");
         consumer.setMessageModel(MessageModel.CLUSTERING);
-        consumer.setInstanceName("group1");
         try {
             consumer.start();
-            Set<MessageQueue> mqs = consumer.fetchSubscribeMessageQueues("testTopic5");
-            for (final MessageQueue queue : mqs) {
-                final long offset = consumer.fetchConsumeOffset(queue, true);
-                putMessageQueueOffset(queue, offset > 0 ? offset : 0);
+
+            Set<MessageQueue> mqs = consumer.fetchSubscribeMessageQueues("testTopic6");
+            for (MessageQueue mq : mqs) {
+                final long offset = consumer.fetchConsumeOffset(mq, true);
+                putMessageQueueOffset(mq, offset > 0 ? offset : 0);
             }
-            Preconditions.checkArgument(!mqs.isEmpty());
+
             while (true) {
-                int count = 0;
-                for (MessageQueue mq : mqs) {
-                    final long messageQueueOffset = getMessageQueueOffset(mq);
-                    log.info("Consume from the queue:id[{}],offset[{}]", mq.getQueueId(), messageQueueOffset);
-                    PullResult pullResult = consumer.pullBlockIfNotFound(mq, null, messageQueueOffset, 30);
-                    log.info("pull result:{}", pullResult);
-                    putMessageQueueOffset(mq, pullResult.getNextBeginOffset());
-                    if (pullResult.getMsgFoundList() != null) {
-                        for (final MessageExt messageExt : pullResult.getMsgFoundList()) {
-                            consumer.updateConsumeOffset(mq, pullResult.getNextBeginOffset());
-                            log.info("pull get msg:key{}", messageExt.getKeys());
+                if (mqs.isEmpty()) {
+                    log.info("sleep");
+                    Thread.sleep(10000);
+                } else {
+                    int count = 0;
+
+                    for (MessageQueue mq : mqs) {
+
+                        final long messageQueueOffset = getMessageQueueOffset(mq);
+                        log.info("Consume from the queue:id[{}],offset[{}]", mq.getQueueId(), messageQueueOffset);
+                        PullResult pullResult = consumer.pullBlockIfNotFound(mq, null, messageQueueOffset, 30);
+                        log.info("pull result:{}", pullResult);
+                        putMessageQueueOffset(mq, pullResult.getNextBeginOffset());
+                        if (pullResult.getMsgFoundList() != null) {
+                            for (final MessageExt messageExt : pullResult.getMsgFoundList()) {
+                                consumer.updateConsumeOffset(mq, pullResult.getNextBeginOffset());
+                                log.info("pull get msg:key{}", messageExt.getKeys());
+                            }
+                            log.info("pull result count:{}", pullResult.getMsgFoundList().size());
+                            count += pullResult.getMsgFoundList().size();
                         }
-                        log.info("pull result count:{}", pullResult.getMsgFoundList().size());
-                        count += pullResult.getMsgFoundList().size();
+                        log.info("status:{}", pullResult.getPullStatus());
                     }
-                    log.info("status:{}", pullResult.getPullStatus());
+                    log.info("pull total msg count:{}", count);
                 }
-                log.info("pull total msg count:{}", count);
+
             }
         } catch (Exception e) {
             log.error(e.getMessage(), e);

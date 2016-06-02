@@ -33,5 +33,6 @@
         <module>rabbitmq-example</module>
         <module>harpc-example</module>
         <module>kafka-example</module>
+        <module>spring-example</module>
     </modules>
 </project>

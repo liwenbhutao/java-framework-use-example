@@ -14,7 +14,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 public class Producer {
     public static void main(String[] args) {
         final DefaultMQProducer producer = new DefaultMQProducer("ProducerGroupName");
-        producer.setVipChannelEnabled(false);
         try {
             /**
              * 一个应用创建一个Producer，由应用来维护此对象，可以设置为全局对象或者单例<br>
@@ -34,10 +33,10 @@ public class Producer {
              * 例如消息写入Master成功，但是Slave不成功，这种情况消息属于成功，但是对于个别应用如果对消息可靠性要求极高，<br>
              * 需要对这种情况做处理。另外，消息可能会存在发送失败的情况，失败重试由应用来处理。
              */
-            for (int i = 10, j = i + 10; i < j; i++)
+            for (int i = 3000, j = i + 30; i < j; i++)
                 try {
                     {
-                        Message msg = new Message("testTopic5",// topic
+                        Message msg = new Message("testTopic6",// topic
                                 "TagA",// tag
                                 "" + i + "_" + RandomStringUtils.randomAlphabetic(10),// key
                                 ("" + i).getBytes());// body
