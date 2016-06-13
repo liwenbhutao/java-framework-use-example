@@ -1,16 +1,18 @@
 package com.ht.test.javax.validation;
 
 
+import lombok.Data;
 import org.hibernate.validator.constraints.*;
 
-import javax.validation.Valid;
+import javax.validation.*;
 import javax.validation.constraints.*;
-import java.io.Serializable;
+import java.util.Set;
 
 /**
  * 所有验证测试的
  */
-public class DemoValidate implements Serializable {
+@Data
+public class DemoValidate {
 
     /**
      * 参考URL ： http://docs.jboss.org/hibernate/validator/4.2/reference/zh-CN/html_single/
@@ -41,11 +43,12 @@ public class DemoValidate implements Serializable {
 
     private String id;
 
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(final String id) {
-        this.id = id;
+    public static void main(final String[] args) {
+        final ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        final Validator validator = factory.getValidator();
+        final DemoValidate demoValidate = new DemoValidate();
+        demoValidate.setId("2");
+        final Set<ConstraintViolation<DemoValidate>> validate = validator.validate(demoValidate);
+        System.out.println(validate);
     }
 }
