@@ -22,24 +22,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
-        <filter-name>DruidWebStatFilter</filter-name>
-        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
-        <init-param>
-            <param-name>exclusions</param-name>
-            <param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
-        </init-param>
-        <init-param>
-            <param-name>profileEnable</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <async-supported>true</async-supported>
-    </filter>
-    <filter-mapping>
-        <filter-name>DruidWebStatFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
     <servlet>
         <servlet-name>spring</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -56,28 +38,6 @@
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
         <url-pattern>/</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>DruidStatView</servlet-name>
-        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
-        <init-param>
-            <param-name>resetEnable</param-name>
-            <param-value>false</param-value>
-        </init-param>
-        <init-param>
-            <param-name>loginUsername</param-name>
-            <param-value>root</param-value>
-        </init-param>
-        <init-param>
-            <param-name>loginPassword</param-name>
-            <param-value>root123!</param-value>
-        </init-param>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>DruidStatView</servlet-name>
-        <url-pattern>/druid/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

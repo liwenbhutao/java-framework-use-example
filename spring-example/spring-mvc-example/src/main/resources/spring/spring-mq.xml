@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="logMessageExtHandler" class="com.caimao.uts.common.mq.rocketmq.hanlder.LogMessageExtHandler"/>
+    <bean id="utsTradeResultConsumerService" class="com.caimao.uts.common.mq.rocketmq.service.PushConsumerService">
+        <property name="topic" value="uts_trade_system_trade_result"/>
+        <property name="subExpression" value="*"/>
+        <property name="mqPropertiesPath" value="classpath:config/trade_result_rocket_mq_consumer_config.properties"/>
+        <property name="subExpressionMessageExtHandlerMap">
+            <map>
+                <entry key="entrust_order" value-ref="exchangeEntrustRequestHandler"/>
+                <entry key="entrust_revoke_order" value-ref="exchangeEntrustRevokeRequestHandler"/>
+                <entry key="*" value-ref="logMessageExtHandler"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="guavaServiceSpringManager" class="com.caimao.uts.spring.util.service.GuavaServiceSpringManager">
+        <property name="serviceList">
+            <list>
+                <ref bean="utsTradeResultConsumerService"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

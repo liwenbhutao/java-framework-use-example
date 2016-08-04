@@ -12,21 +12,32 @@
 
     <artifactId>test-jmeter-example</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <repositories>
-        <repository>
-            <id>CN</id>
-            <name>OSChina Central</name>
-            <url>http://maven.oschina.net/content/groups/public</url>
-        </repository>
-
-        <repository>
-            <id>repo</id>
-            <name>repo</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </repository>
-
-    </repositories>
     <dependencies>
+        <dependency>
+            <groupId>com.caimao.uts</groupId>
+            <artifactId>uts-common-harpc</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caimao.uts</groupId>
+            <artifactId>uts-common-thrift-protocol</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caimao.uts</groupId>
+            <artifactId>uts-common-thrift-protocol-support</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.caimao.uts</groupId>
+            <artifactId>uts-common-mq-rocketmq</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.apache.jmeter</groupId>
             <artifactId>ApacheJMeter_java</artifactId>

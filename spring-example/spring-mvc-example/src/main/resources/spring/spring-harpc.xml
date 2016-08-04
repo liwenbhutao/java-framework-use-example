@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="utsGatewayServiceClient"
+          class="com.caimao.uts.gateway.api.harpc.UtsServiceClientFactoryBean">
+        <property name="configPath" value="classpath:harpc/uts_service_ha_rpc_client_config.properties"/>
+    </bean>
+
+    <!--
+        <bean id="goldExchangeServiceClient" class="com.caimao.uts.exchange.api.harpc.UtsExchangeServiceClientFactoryBean">
+            <property name="configPath" value="classpath:harpc/exchange_gold_ha_rpc_client_config.properties"/>
+        </bean>
+    -->
+
+    <!--<bean id="queryUtsThriftService"
+          class="com.caimao.uts.trade.system.query.application.service.support.QueryUtsThriftService"/>
+
+    <harpc:registry id="reg" connectstr="${zookeeper.connect_str}" auth="${zookeeper.auth}"/>
+
+    <harpc:server id="harpcServer" name="uts-query-app-service" owner="hutao"
+                  service="/com.caimao.uts.gateway.api.service$QueryUtsAppThriftService" ref="queryUtsThriftService"
+                  port="9999"/>
+
+    <harpc:client id="utsGoldExchangeService" service="com.caimao.uts.preciousmetal.service$UTSQueryThriftService"
+                  iface="com.caimao.uts.exchange.api.service.UTSExchangeService$Iface"/>
+
+    <harpc:registry id="reg" connectstr="${zookeeper.connect_str}" auth="${zookeeper.auth}"/>-->
+</beans>

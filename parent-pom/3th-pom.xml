@@ -28,7 +28,7 @@
         <aspectj.version>1.8.9</aspectj.version>
         <lucene.version>6.0.0</lucene.version>
         <solr.version>6.0.0</solr.version>
-        <curator.version>3.1.0</curator.version>
+        <curator.version>2.9.1</curator.version>
         <zookeeper.version>3.4.8</zookeeper.version>
         <vertx.version>3.2.1</vertx.version>
         <common.io.version>2.5</common.io.version>
@@ -437,11 +437,12 @@
                 <version>3.20.0-GA</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
             <dependency>
                 <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.5</version>
+                <artifactId>javax.servlet-api</artifactId>
                 <scope>provided</scope>
+                <version>3.1.0</version>
             </dependency>
             <dependency>
                 <groupId>javax.servlet.jsp</groupId>

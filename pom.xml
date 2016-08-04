@@ -35,5 +35,7 @@
         <module>kafka-example</module>
         <module>spring-example</module>
         <module>other-example</module>
+        <module>stagemonitor-example</module>
+        <module>brave-example</module>
     </modules>
 </project>
