@@ -36,7 +36,7 @@ public final class JsonUtil {
     public static String toJsonString(final Object obj) {
         try {
             return OBJ_MAPPER.writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
+        } catch (final JsonProcessingException e) {
             throw new RuntimeException("parse to json String error", e);
         }
     }
@@ -52,7 +52,7 @@ public final class JsonUtil {
     public static <T> T parseObject(final String jsonString, final Class<T> clazz) {
         try {
             return OBJ_MAPPER.readValue(jsonString, clazz);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             throw new RuntimeException("parse to object error", e);
         }
     }
@@ -68,7 +68,7 @@ public final class JsonUtil {
     public static <T> T parseObject(final String jsonString, final TypeReference<T> typeReference) {
         try {
             return OBJ_MAPPER.readValue(jsonString, typeReference);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             throw new RuntimeException("parse to object error", e);
         }
     }
@@ -99,7 +99,7 @@ public final class JsonUtil {
         }
         try {
             return OBJ_MAPPER.readValue(jsonString, OBJ_MAPPER.getTypeFactory().constructType(List.class, clazz));
-        } catch (IOException e) {
+        } catch (final IOException e) {
             throw new RuntimeException("parse to object error", e);
         }
     }
@@ -118,7 +118,7 @@ public final class JsonUtil {
         }
         try {
             return OBJ_MAPPER.readValue(jsonString, typeReference);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             throw new RuntimeException("parse to object error", e);
         }
     }

@@ -40,7 +40,7 @@ public class PageModel<T> {
     /**
      * 单页记录
      */
-    private List<T> records = new ArrayList<T>();
+    private List<T> records = new ArrayList<>();
     /**
      * 起始index
      */
@@ -75,8 +75,8 @@ public class PageModel<T> {
      */
     public void setCount(final long count) {
         this.count = count;
-        this.totalPage = (int) ((count + pageSize - 1) / pageSize);
-        this.hasNextPage = pageNO < totalPage;
+        this.totalPage = (int) ((count + this.pageSize - 1) / this.pageSize);
+        this.hasNextPage = this.pageNO < this.totalPage;
     }
 
     /**

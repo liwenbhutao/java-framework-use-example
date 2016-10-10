@@ -118,7 +118,7 @@ public class TOTPUtil {
             return false;
         }
 
-        long millisDrift = secondsDrift * 1000;
+        final long millisDrift = secondsDrift * 1000;
 
         // try to match against a clock that's ahead of this system's clock
         counter = (currentTimeMillis + millisDrift) / 30000;
@@ -208,7 +208,7 @@ public class TOTPUtil {
                     .append(encode(accountName)).append("?secret=").append(encode(secret.replace(" ", "").toUpperCase()))
                     .append("&issuer=").append(encode(issuerName));
 
-        } catch (UnsupportedEncodingException e) {
+        } catch (final UnsupportedEncodingException e) {
             throw Throwables.propagate(e);
         }
     }

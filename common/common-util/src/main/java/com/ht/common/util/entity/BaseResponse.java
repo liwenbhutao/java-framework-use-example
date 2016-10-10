@@ -111,7 +111,7 @@ public class BaseResponse {
          * @return
          */
         public Builder addParam(final String key, final String value) {
-            params.put(key, value);
+            this.params.put(key, value);
             return this;
         }
 
@@ -132,8 +132,8 @@ public class BaseResponse {
          * @return
          */
         public BaseResponse build() {
-            return new BaseResponse(obj == null ? "" : obj,
-                    retCode, message, params);
+            return new BaseResponse(this.obj == null ? "" : this.obj,
+                    this.retCode, this.message, this.params);
         }
     }
 }
