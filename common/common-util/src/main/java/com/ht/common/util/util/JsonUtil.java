@@ -1,4 +1,4 @@
-package com.yz.bourse.common.util;
+package com.ht.common.util.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;

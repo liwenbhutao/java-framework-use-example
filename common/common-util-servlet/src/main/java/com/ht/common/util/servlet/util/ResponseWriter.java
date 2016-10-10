@@ -1,6 +1,6 @@
-package com.yz.bourse.common.servlet.util;
+package com.ht.common.util.servlet.util;
 
-import com.yz.bourse.common.util.JsonUtil;
+import com.ht.common.util.util.JsonUtil;
 
 import javax.servlet.ServletResponse;
 import java.io.IOException;

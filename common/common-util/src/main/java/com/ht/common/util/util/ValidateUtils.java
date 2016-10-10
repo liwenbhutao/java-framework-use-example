@@ -1,4 +1,4 @@
-package com.yz.bourse.common.util;
+package com.ht.common.util.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;

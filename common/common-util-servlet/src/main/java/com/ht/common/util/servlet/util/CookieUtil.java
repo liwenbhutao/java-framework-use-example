@@ -1,4 +1,4 @@
-package com.yz.bourse.common.servlet.util;
+package com.ht.common.util.servlet.util;
 
 import org.apache.commons.lang3.StringUtils;
 

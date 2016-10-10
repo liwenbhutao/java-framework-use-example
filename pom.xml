@@ -38,5 +38,6 @@
         <module>stagemonitor-example</module>
         <module>brave-example</module>
         <module>profile-example</module>
+        <module>pinpont-example</module>
     </modules>
 </project>

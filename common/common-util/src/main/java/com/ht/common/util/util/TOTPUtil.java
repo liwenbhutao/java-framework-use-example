@@ -1,4 +1,4 @@
-package com.yz.bourse.common.util;
+package com.ht.common.util.util;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Throwables;

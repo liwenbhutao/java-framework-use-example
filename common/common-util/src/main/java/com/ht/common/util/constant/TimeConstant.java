@@ -1,4 +1,4 @@
-package com.yz.bourse.common.constant;
+package com.ht.common.util.constant;
 
 /**
  * Created by hutao on 15/6/23.

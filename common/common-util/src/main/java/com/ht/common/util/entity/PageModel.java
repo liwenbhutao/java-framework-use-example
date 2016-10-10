@@ -1,4 +1,4 @@
-package com.yz.bourse.common.entity;
+package com.ht.common.util.entity;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;

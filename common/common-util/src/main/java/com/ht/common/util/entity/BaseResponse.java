@@ -1,4 +1,4 @@
-package com.yz.bourse.common.entity;
+package com.ht.common.util.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
