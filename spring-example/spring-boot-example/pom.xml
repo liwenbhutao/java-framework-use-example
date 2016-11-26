@@ -10,103 +10,11 @@
     </parent>
     <artifactId>test-spring-boot-example</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <properties>
-        <stagemonitor_version>0.27.2</stagemonitor_version>
-    </properties>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.stagemonitor/stagemonitor-core -->
-        <dependency>
-            <groupId>org.stagemonitor</groupId>
-            <artifactId>stagemonitor-core</artifactId>
-            <version>${stagemonitor_version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.stagemonitor/stagemonitor-requestmonitor -->
-        <dependency>
-            <groupId>org.stagemonitor</groupId>
-            <artifactId>stagemonitor-requestmonitor</artifactId>
-            <version>${stagemonitor_version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.stagemonitor/stagemonitor-alerting -->
-        <dependency>
-            <groupId>org.stagemonitor</groupId>
-            <artifactId>stagemonitor-alerting</artifactId>
-            <version>${stagemonitor_version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.stagemonitor/stagemonitor-web -->
-        <dependency>
-            <groupId>org.stagemonitor</groupId>
-            <artifactId>stagemonitor-web</artifactId>
-            <version>${stagemonitor_version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>compile</scope>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.3.7.RELEASE</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.3.5.RELEASE</version>
-                <configuration>
-                    <mainClass>com.ht.test.spring.boot.profile.App</mainClass>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+    <modules>
+        <module>spring-boot-mvc-example</module>
+        <module>spring-boot-mertics-example</module>
+    </modules>
 
 </project>
