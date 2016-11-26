@@ -65,6 +65,7 @@
         <archaius2.version>2.0.5</archaius2.version>
         <rocketmq.version>3.2.6</rocketmq.version>
         <harpc.version>1.2</harpc.version>
+        <mybatis.spring.boot.version>1.1.1</mybatis.spring.boot.version>
     </properties>
 
     <dependencyManagement>
@@ -1111,6 +1112,19 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>5.3.0.Alpha1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-autoconfigure</artifactId>
+                <version>${mybatis.spring.boot.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>4.1.6</version>
             </dependency>
 
 

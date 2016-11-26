@@ -1,5 +1,6 @@
 package com.ht.test.spring.boot.mvc;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -13,7 +14,8 @@ import org.springframework.context.annotation.ComponentScan;
  * @version 1.0
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.ht.test.spring.boot.mvc.controller"})
+@ComponentScan(basePackages = {"com.ht.test.spring.boot.mvc"})
+@MapperScan("com.ht.test.spring.boot.mvc.service.impl.dao")
 public class App extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(final SpringApplicationBuilder builder) {
