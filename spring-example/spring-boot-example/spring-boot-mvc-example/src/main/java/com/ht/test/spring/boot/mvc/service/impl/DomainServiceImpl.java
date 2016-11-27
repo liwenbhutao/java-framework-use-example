@@ -1,5 +1,6 @@
 package com.ht.test.spring.boot.mvc.service.impl;
 
+import com.google.common.base.Preconditions;
 import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
 import com.ht.test.spring.boot.mvc.service.impl.dao.DomainDao;
@@ -31,5 +32,12 @@ public class DomainServiceImpl implements DomainService {
         final Domain domain = new Domain();
         domainDao.insert(domain);
         return domain.getId();
+    }
+
+    @Override
+    public Domain loadById(long id) {
+        final Domain domain = domainDao.loadById(id);
+        Preconditions.checkNotNull(domain);
+        return domain;
     }
 }

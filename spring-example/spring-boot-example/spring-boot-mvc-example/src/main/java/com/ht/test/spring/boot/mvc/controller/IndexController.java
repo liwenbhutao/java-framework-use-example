@@ -1,9 +1,11 @@
 package com.ht.test.spring.boot.mvc.controller;
 
 import com.ht.test.spring.boot.mvc.service.DomainService;
+import com.ht.test.spring.boot.mvc.service.domain.Domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -44,5 +46,11 @@ public class IndexController {
     @ResponseBody
     public long createDomain(final HttpServletRequest request, final Model model) {
         return domainService.createDomain();
+    }
+
+    @RequestMapping(value = "/domain/load/{id}")
+    @ResponseBody
+    public Domain loadDomain(@PathVariable long id, final HttpServletRequest request, final Model model) {
+        return domainService.loadById(id);
     }
 }

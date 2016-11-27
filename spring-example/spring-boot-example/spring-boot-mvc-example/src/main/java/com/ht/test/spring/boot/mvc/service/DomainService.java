@@ -1,5 +1,7 @@
 package com.ht.test.spring.boot.mvc.service;
 
+import com.ht.test.spring.boot.mvc.service.domain.Domain;
+
 /**
  * Created on 2016/11/11.
  *
@@ -8,4 +10,6 @@ package com.ht.test.spring.boot.mvc.service;
  */
 public interface DomainService {
     long createDomain();
+
+    Domain loadById(final long id);
 }

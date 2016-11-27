@@ -21,4 +21,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DomainDao {
     long insert(Domain domain);
+
+    Domain loadById(long id);
 }
