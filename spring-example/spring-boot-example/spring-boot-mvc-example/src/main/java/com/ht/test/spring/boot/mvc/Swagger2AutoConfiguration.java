@@ -17,7 +17,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
  * @author hutao <胡涛, 123406956@qq.com>
  * @version v1.0
  * @project test-spring-boot-example
- * @Description
+ * @Description http://localhost:8080/swagger-ui.html#/
  * @encoding UTF-8
  * @date 2016/12/1
  * @time 上午9:15
