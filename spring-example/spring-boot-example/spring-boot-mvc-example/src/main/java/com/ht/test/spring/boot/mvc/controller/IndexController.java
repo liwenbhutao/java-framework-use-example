@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class IndexController {
      *
      * @return
      */
-    @RequestMapping(value = {"/", ""})
+    @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
     public String index() {
         return "/index";
     }
@@ -37,20 +38,20 @@ public class IndexController {
      *
      * @return
      */
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String indexView(final HttpServletRequest request, final Model model) {
         return "/index";
     }
 
-    @RequestMapping(value = "/domain/create")
+    @RequestMapping(value = "/domain/create", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public long createDomain(final HttpServletRequest request, final Model model) {
-        return domainService.createDomain();
+        return this.domainService.createDomain();
     }
 
-    @RequestMapping(value = "/domain/load/{id}")
+    @RequestMapping(value = "/domain/load/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Domain loadDomain(@PathVariable long id, final HttpServletRequest request, final Model model) {
-        return domainService.loadById(id);
+    public Domain loadDomain(@PathVariable final long id, final HttpServletRequest request, final Model model) {
+        return this.domainService.loadById(id);
     }
 }
