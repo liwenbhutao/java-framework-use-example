@@ -35,6 +35,8 @@ public class Swagger2AutoConfiguration {
     public Docket petApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("full-petstore")
+                .produces(Sets.newHashSet("application/json"))
+                .consumes(Sets.newHashSet("application/json"))
                 .apiInfo(apiInfo())
                 .forCodeGeneration(true)
                 .select()

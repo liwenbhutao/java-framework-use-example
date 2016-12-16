@@ -27,20 +27,20 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class AInterceptor extends HandlerInterceptorAdapter {
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final ModelAndView modelAndView) throws Exception {
         super.postHandle(request, response, handler, modelAndView);
-        log.info("$$$$$$$$111");
+//        log.info("$$$$$$$$111");
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final Exception ex) throws Exception {
         super.afterCompletion(request, response, handler, ex);
-        log.info("$$$$$$$$222");
+//        log.info("$$$$$$$$222");
     }
 
     @Override
-    public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public void afterConcurrentHandlingStarted(final HttpServletRequest request, final HttpServletResponse response, final Object handler) throws Exception {
         super.afterConcurrentHandlingStarted(request, response, handler);
-        log.info("$$$$$$$$333");
+//        log.info("$$$$$$$$333");
     }
 }

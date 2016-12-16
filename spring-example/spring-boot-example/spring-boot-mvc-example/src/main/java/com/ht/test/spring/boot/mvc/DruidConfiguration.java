@@ -47,6 +47,7 @@ import java.util.Properties;
  * --------------------------------------------------
  * </pre>
  */
+
 @Configuration
 @ConditionalOnClass(DataSource.class)
 @ConditionalOnProperty(name = "spring.datasource.type",
@@ -61,7 +62,7 @@ public class DruidConfiguration implements EnvironmentAware {
     private RelaxedPropertyResolver propertyResolver;
 
     @Override
-    public void setEnvironment(Environment environment) {
+    public void setEnvironment(final Environment environment) {
         this.environment = environment;
         this.propertyResolver = new RelaxedPropertyResolver(environment, "spring.datasource.");
     }
@@ -70,81 +71,81 @@ public class DruidConfiguration implements EnvironmentAware {
     @ConditionalOnWebApplication
     @ConditionalOnClass(Servlet.class)
     public ServletRegistrationBean druidServlet() {
-        final ServletRegistrationBean reg = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
-        reg.addInitParameter("loginUsername", druidProperties.getDruidUsername());
-        reg.addInitParameter("loginPassword", druidProperties.getDruidPassword());
+        final ServletRegistrationBean reg = new ServletRegistrationBean(new StatViewServlet(), "/druid");
+        reg.addInitParameter("loginUsername", this.druidProperties.getDruidUsername());
+        reg.addInitParameter("loginPassword", this.druidProperties.getDruidPassword());
         return reg;
     }
 
     @Bean
     public DataSourceProperties properties() {
-        return druidProperties;
+        return this.druidProperties;
     }
 
     @Bean(initMethod = "init", destroyMethod = "close")
     public DataSource dataSource() {
-        DruidDataSource druidDataSource = new DruidDataSource();
-        druidDataSource.setDriverClassName(propertyResolver.getProperty("driver-class-name"));
-        druidDataSource.setUrl(propertyResolver.getProperty("url"));
-        druidDataSource.setUsername(propertyResolver.getProperty("username"));
-        druidDataSource.setPassword(propertyResolver.getProperty("password"));
-        if (druidProperties.getMaxActive() != null) {
-            druidDataSource.setMaxActive(druidProperties.getMaxActive());
+        final DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setDriverClassName(this.propertyResolver.getProperty("driver-class-name"));
+        druidDataSource.setUrl(this.propertyResolver.getProperty("url"));
+        druidDataSource.setUsername(this.propertyResolver.getProperty("username"));
+        druidDataSource.setPassword(this.propertyResolver.getProperty("password"));
+        if (this.druidProperties.getMaxActive() != null) {
+            druidDataSource.setMaxActive(this.druidProperties.getMaxActive());
         }
-        if (druidProperties.getInitialSize() != null) {
-            druidDataSource.setInitialSize(druidProperties.getInitialSize());
+        if (this.druidProperties.getInitialSize() != null) {
+            druidDataSource.setInitialSize(this.druidProperties.getInitialSize());
         }
-        if (druidProperties.getMinIdle() != null) {
-            druidDataSource.setMinIdle(druidProperties.getMinIdle());
+        if (this.druidProperties.getMinIdle() != null) {
+            druidDataSource.setMinIdle(this.druidProperties.getMinIdle());
         }
-        if (druidProperties.getMaxWait() != null) {
-            druidDataSource.setMaxWait(druidProperties.getMaxWait());
+        if (this.druidProperties.getMaxWait() != null) {
+            druidDataSource.setMaxWait(this.druidProperties.getMaxWait());
         }
-        if (druidProperties.getTimeBetweenConnectErrorMillis() != null) {
-            druidDataSource.setTimeBetweenConnectErrorMillis(druidProperties.getTimeBetweenConnectErrorMillis());
+        if (this.druidProperties.getTimeBetweenConnectErrorMillis() != null) {
+            druidDataSource.setTimeBetweenConnectErrorMillis(this.druidProperties.getTimeBetweenConnectErrorMillis());
         }
-        if (druidProperties.getTimeBetweenEvictionRunsMillis() != null) {
-            druidDataSource.setTimeBetweenEvictionRunsMillis(druidProperties.getTimeBetweenEvictionRunsMillis());
+        if (this.druidProperties.getTimeBetweenEvictionRunsMillis() != null) {
+            druidDataSource.setTimeBetweenEvictionRunsMillis(this.druidProperties.getTimeBetweenEvictionRunsMillis());
         }
-        if (druidProperties.getMinEvictableIdleTimeMillis() != null) {
-            druidDataSource.setMinEvictableIdleTimeMillis(druidProperties.getMinEvictableIdleTimeMillis());
+        if (this.druidProperties.getMinEvictableIdleTimeMillis() != null) {
+            druidDataSource.setMinEvictableIdleTimeMillis(this.druidProperties.getMinEvictableIdleTimeMillis());
         }
-        if (druidProperties.getTestWhileIdle() != null) {
-            druidDataSource.setTestWhileIdle(druidProperties.getTestWhileIdle());
+        if (this.druidProperties.getTestWhileIdle() != null) {
+            druidDataSource.setTestWhileIdle(this.druidProperties.getTestWhileIdle());
         }
-        if (druidProperties.getTestOnBorrow() != null) {
-            druidDataSource.setTestOnBorrow(druidProperties.getTestOnBorrow());
+        if (this.druidProperties.getTestOnBorrow() != null) {
+            druidDataSource.setTestOnBorrow(this.druidProperties.getTestOnBorrow());
         }
-        if (druidProperties.getTestOnReturn() != null) {
-            druidDataSource.setTestOnReturn(druidProperties.getTestOnReturn());
+        if (this.druidProperties.getTestOnReturn() != null) {
+            druidDataSource.setTestOnReturn(this.druidProperties.getTestOnReturn());
         }
-        if (druidProperties.getPoolPreparedStatements() != null) {
-            druidDataSource.setPoolPreparedStatements(druidProperties.getPoolPreparedStatements());
+        if (this.druidProperties.getPoolPreparedStatements() != null) {
+            druidDataSource.setPoolPreparedStatements(this.druidProperties.getPoolPreparedStatements());
         }
-        if (druidProperties.getMaxOpenPreparedStatements() != null) {
-            druidDataSource.setMaxOpenPreparedStatements(druidProperties.getMaxOpenPreparedStatements());
+        if (this.druidProperties.getMaxOpenPreparedStatements() != null) {
+            druidDataSource.setMaxOpenPreparedStatements(this.druidProperties.getMaxOpenPreparedStatements());
         }
-        if (druidProperties.getMaxPoolPreparedStatementPerConnectionSize() != null) {
-            druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(druidProperties.getMaxPoolPreparedStatementPerConnectionSize());
+        if (this.druidProperties.getMaxPoolPreparedStatementPerConnectionSize() != null) {
+            druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(this.druidProperties.getMaxPoolPreparedStatementPerConnectionSize());
         }
-        if (druidProperties.getQueryTimeout() != null) {
-            druidDataSource.setQueryTimeout(druidProperties.getQueryTimeout());
+        if (this.druidProperties.getQueryTimeout() != null) {
+            druidDataSource.setQueryTimeout(this.druidProperties.getQueryTimeout());
         }
-        if (druidProperties.getTransactionQueryTimeout() != null) {
-            druidDataSource.setTransactionQueryTimeout(druidProperties.getTransactionQueryTimeout());
+        if (this.druidProperties.getTransactionQueryTimeout() != null) {
+            druidDataSource.setTransactionQueryTimeout(this.druidProperties.getTransactionQueryTimeout());
         }
-        if (!Strings.isNullOrEmpty(druidProperties.getValidationQuery())) {
-            druidDataSource.setValidationQuery(druidProperties.getValidationQuery());
-        }
-
-        if (!Strings.isNullOrEmpty(druidProperties.getConnectionProperties())) {
-            druidDataSource.setConnectionProperties(druidProperties.getConnectionProperties());
+        if (!Strings.isNullOrEmpty(this.druidProperties.getValidationQuery())) {
+            druidDataSource.setValidationQuery(this.druidProperties.getValidationQuery());
         }
 
-        if (!Strings.isNullOrEmpty(druidProperties.getFilters())) {
+        if (!Strings.isNullOrEmpty(this.druidProperties.getConnectionProperties())) {
+            druidDataSource.setConnectionProperties(this.druidProperties.getConnectionProperties());
+        }
+
+        if (!Strings.isNullOrEmpty(this.druidProperties.getFilters())) {
             try {
-                druidDataSource.setFilters(druidProperties.getFilters());
-            } catch (SQLException e) {
+                druidDataSource.setFilters(this.druidProperties.getFilters());
+            } catch (final SQLException e) {
                 log.error("set druid datasource filter error:{}", e.getMessage(), e);
             }
         }
@@ -155,20 +156,20 @@ public class DruidConfiguration implements EnvironmentAware {
     @ConditionalOnWebApplication
     @ConditionalOnClass(Servlet.class)
     public FilterRegistrationBean filterRegistrationBean() {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        final FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setFilter(new WebStatFilter());
-        filterRegistrationBean.addUrlPatterns("/*");
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        filterRegistrationBean.addUrlPatterns("");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid");
         return filterRegistrationBean;
     }
 
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        final SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
         //mybatis分页
-        PageHelper pageHelper = new PageHelper();
-        Properties props = new Properties();
+        final PageHelper pageHelper = new PageHelper();
+        final Properties props = new Properties();
         props.setProperty("dialect", "mysql");
         props.setProperty("reasonable", "true");
         props.setProperty("supportMethodsArguments", "true");
@@ -177,7 +178,7 @@ public class DruidConfiguration implements EnvironmentAware {
         pageHelper.setProperties(props);
         //添加插件
         sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        final PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/mapper/*.xml"));
         sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:/mybatis/mybatis.xml"));
         return sqlSessionFactoryBean.getObject();

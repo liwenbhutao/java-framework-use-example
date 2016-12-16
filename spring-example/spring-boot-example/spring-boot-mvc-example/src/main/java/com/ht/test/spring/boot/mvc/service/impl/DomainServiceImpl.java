@@ -5,7 +5,6 @@ import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
 import com.ht.test.spring.boot.mvc.service.impl.dao.DomainDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * @author hutao <hutao, hutao@email.com>
@@ -22,7 +21,7 @@ import org.springframework.stereotype.Service;
  * --------------------------------------------------
  * </pre>
  */
-@Service
+//@Service
 public class DomainServiceImpl implements DomainService {
     @Autowired
     private DomainDao domainDao;
@@ -30,13 +29,13 @@ public class DomainServiceImpl implements DomainService {
     @Override
     public long createDomain() {
         final Domain domain = new Domain();
-        domainDao.insert(domain);
+        this.domainDao.insert(domain);
         return domain.getId();
     }
 
     @Override
-    public Domain loadById(long id) {
-        final Domain domain = domainDao.loadById(id);
+    public Domain loadById(final long id) {
+        final Domain domain = this.domainDao.loadById(id);
         Preconditions.checkNotNull(domain);
         return domain;
     }

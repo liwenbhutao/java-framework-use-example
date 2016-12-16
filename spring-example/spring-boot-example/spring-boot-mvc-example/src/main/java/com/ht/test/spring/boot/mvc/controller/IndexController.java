@@ -1,16 +1,17 @@
 package com.ht.test.spring.boot.mvc.controller;
 
+import com.ht.test.spring.boot.mvc.controller.dto.CreateDomainParamsDto;
+import com.ht.test.spring.boot.mvc.controller.helper.OwnerConsts;
 import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 /**
  * Created on 2016/11/21.
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class IndexController {
-    @Autowired
+    //    @Autowired
     private DomainService domainService;
 
     /**
@@ -43,9 +44,11 @@ public class IndexController {
         return "/index";
     }
 
+    @ApiOperation(value = "")
     @RequestMapping(value = "/domain/create", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-    public long createDomain(final HttpServletRequest request, final Model model) {
+    public long createDomain(@Valid final CreateDomainParamsDto createDomainParamsDto,
+                             @RequestParam(name = "id") final long io) {
         return this.domainService.createDomain();
     }
 
@@ -53,5 +56,11 @@ public class IndexController {
     @ResponseBody
     public Domain loadDomain(@PathVariable final long id, final HttpServletRequest request, final Model model) {
         return this.domainService.loadById(id);
+    }
+
+    @PostConstruct
+    void a() {
+        final String a = OwnerConsts.getConfig().a();
+        System.out.println(a);
     }
 }
