@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 import java.util.regex.Pattern;
 
 /**
- * @author hutao <胡涛, 123406956@qq.com>
+ * @author hutao <胡涛, hutao@coolqi.com>
  * @version v1.0
  * @project coolqi-common
  * @Description
@@ -28,7 +28,7 @@ public class RegexPatternConstant {
     public static final Pattern CHINESE_PATTERN = Pattern.compile("^([\u4E00-\uFA29]|[\uE7C7-\uE7F3])*$");
 
     public static final Pattern URL_PATTERN = Pattern.compile("^((https|http)?:\\/\\/)[^\\s]+");
-    public static final Pattern CHINA_PHONE = Pattern.compile("^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$");
+    public static final Pattern CHINA_PHONE = Pattern.compile("^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(147))\\d{8}$");
     public static final Pattern CHINA_IDCARD = Pattern.compile("^(\\d{6})()?(\\d{4})(\\d{2})(\\d{2})(\\d{3})(\\w)$");
 
 

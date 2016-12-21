@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 import java.math.BigDecimal;
 
 /**
- * @author hutao <胡涛, 123406956@qq.com>
+ * @author hutao <胡涛, hutao@coolqi.com>
  * @version v1.0
  * @project coolqi-common
  * @Description

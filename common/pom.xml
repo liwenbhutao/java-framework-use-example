@@ -15,6 +15,7 @@
 
     <modules>
         <module>common-util</module>
+        <module>common-spring-util</module>
         <module>common-util-servlet</module>
         <module>common-mq</module>
     </modules>

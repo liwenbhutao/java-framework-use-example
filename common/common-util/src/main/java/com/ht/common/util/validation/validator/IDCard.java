@@ -10,7 +10,7 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * @author hutao <胡涛, 123406956@qq.com>
+ * @author hutao <胡涛, hutao@coolqi.com>
  * @version v1.0
  * @project coolqi-common
  * @Description 身份证号码

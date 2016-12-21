@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author hutao <胡涛, 123406956@qq.com>
+ * @author hutao <胡涛, hutao@coolqi.com>
  * @version v1.0
  * @project coolqi-common
  * @Description 校验密码格式

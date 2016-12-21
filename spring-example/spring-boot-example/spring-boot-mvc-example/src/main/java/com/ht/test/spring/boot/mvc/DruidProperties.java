@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.util.List;
+
 /**
  * @author hutao <hutao, hutao@email.com>
  * @version v1.0
@@ -91,4 +93,6 @@ public class DruidProperties extends DataSourceProperties {
     private Long timeBetweenConnectErrorMillis;
     @Value("${connectionProperties:}")
     private String connectionProperties;
+    @Value("${a:}")
+    private List<String> a;
 }

@@ -1,14 +1,14 @@
 package com.ht.common.util.validation.validator;
 
 
-import com.coolqi.common.util.constant.RegexPatternConstant;
 import com.google.common.base.Strings;
+import com.ht.common.util.constant.RegexPatternConstant;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 /**
- * @author hutao <胡涛, 123406956@qq.com>
+ * @author hutao <胡涛, hutao@coolqi.com>
  * @version v1.0
  * @project coolqi-common
  * @Description 验证手机验证码是否正确
