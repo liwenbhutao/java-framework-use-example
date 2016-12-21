@@ -23,4 +23,6 @@ public interface DomainDao {
     long insert(Domain domain);
 
     Domain loadById(long id);
+
+    Domain loadById2(long id);
 }

@@ -11,4 +11,9 @@
         SELECT * FROM tb_domain
         WHERE id=#{id}
     </select>
+
+    <select id="loadById2" resultType="com.ht.test.spring.boot.mvc.service.domain.Domain">
+        SELECT * FROM tb_domain
+        WHERE id=#{id}
+    </select>
 </mapper>

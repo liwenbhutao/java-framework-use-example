@@ -12,4 +12,6 @@ public interface DomainService {
     long createDomain();
 
     Domain loadById(final long id);
+
+    Domain loadById2(final long id);
 }

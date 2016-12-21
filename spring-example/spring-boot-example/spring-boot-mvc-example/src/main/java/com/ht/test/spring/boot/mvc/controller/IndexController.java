@@ -31,6 +31,8 @@ public class IndexController {
      */
     @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
     public String index() {
+        this.domainService.loadById(1);
+        this.domainService.loadById2(1);
         return "/index";
     }
 
@@ -60,6 +62,7 @@ public class IndexController {
 
     @PostConstruct
     void a() {
+
         final String a = OwnerConsts.getConfig().a();
         System.out.println(a);
     }

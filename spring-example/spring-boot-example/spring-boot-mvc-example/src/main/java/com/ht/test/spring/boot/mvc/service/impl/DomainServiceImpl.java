@@ -1,5 +1,7 @@
 package com.ht.test.spring.boot.mvc.service.impl;
 
+import com.coolqi.common.spring.util.database.aop.Read;
+import com.coolqi.common.spring.util.database.aop.Write;
 import com.google.common.base.Preconditions;
 import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
@@ -33,9 +35,18 @@ public class DomainServiceImpl implements DomainService {
         return domain.getId();
     }
 
+    @Write
     @Override
     public Domain loadById(final long id) {
         final Domain domain = this.domainDao.loadById(id);
+        Preconditions.checkNotNull(domain);
+        return domain;
+    }
+
+    @Read
+    @Override
+    public Domain loadById2(final long id) {
+        final Domain domain = this.domainDao.loadById2(id);
         Preconditions.checkNotNull(domain);
         return domain;
     }
