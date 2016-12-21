@@ -1,25 +1,13 @@
 package com.ht.test.spring.boot.mvc;
 
-import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.plugin.Interceptor;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.EnvironmentAware;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
-import java.util.Properties;
 
 /**
  * @author hutao <hutao, hutao@email.com>
@@ -41,13 +29,15 @@ import java.util.Properties;
 @ConditionalOnBean(DataSource.class)
 //@ConditionalOnProperty(name = "spring.datasource.type",
 //        havingValue = "com.alibaba.druid.pool.DruidDataSource")
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @Slf4j
 public class DruidConfiguration implements EnvironmentAware {
     private Environment environment;
     private RelaxedPropertyResolver propertyResolver;
+/*
     @Autowired
     private DataSource dataSource;
+*/
 
     @Override
     public void setEnvironment(final Environment environment) {
@@ -55,7 +45,7 @@ public class DruidConfiguration implements EnvironmentAware {
         this.propertyResolver = new RelaxedPropertyResolver(environment, "spring.datasource.");
     }
 
-    @Bean
+    /*@Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         final SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(this.dataSource);
@@ -71,13 +61,15 @@ public class DruidConfiguration implements EnvironmentAware {
         //添加插件
         sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});
         final PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mybatis/mapper*//*.xml"));
         sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:/mybatis/mybatis.xml"));
         return sqlSessionFactoryBean.getObject();
-    }
+    }*/
 
+/*
     @Bean
     public PlatformTransactionManager transactionManager() throws SQLException {
         return new DataSourceTransactionManager(this.dataSource);
     }
+*/
 }

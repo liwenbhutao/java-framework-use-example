@@ -3,7 +3,7 @@ package com.ht.common.spring.util.database.aop;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.Ordered;
 
 import java.lang.reflect.Method;
 
@@ -22,9 +22,9 @@ import java.lang.reflect.Method;
  * --------------------------------------------------
  * </pre>
  */
-@Aspect
+//@Aspect
 @Slf4j
-public class DynamicDataSourceRouterAdvice implements MethodInterceptor {
+public class DynamicDataSourceRouterAdvice implements MethodInterceptor, Ordered {
     @Override
     public Object invoke(final MethodInvocation invocation) throws Throwable {
         final Method invocationMethod = invocation.getMethod();
@@ -37,5 +37,10 @@ public class DynamicDataSourceRouterAdvice implements MethodInterceptor {
         } finally {
             DynamicDataSourceAopUtil.postMethodProceed(invocationMethod, invocation.getThis().getClass());
         }
+    }
+
+    @Override
+    public int getOrder() {
+        return Ordered.LOWEST_PRECEDENCE;
     }
 }

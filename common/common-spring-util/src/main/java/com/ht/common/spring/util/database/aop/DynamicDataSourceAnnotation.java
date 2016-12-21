@@ -1,9 +1,6 @@
 package com.ht.common.spring.util.database.aop;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * @author hutao <胡涛, hutao@coolqi.com>
@@ -20,8 +17,9 @@ import java.lang.annotation.Target;
  * --------------------------------------------------
  * </pre>
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ElementType.PACKAGE, ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
+@Documented
 public @interface DynamicDataSourceAnnotation {
     String value();
 }

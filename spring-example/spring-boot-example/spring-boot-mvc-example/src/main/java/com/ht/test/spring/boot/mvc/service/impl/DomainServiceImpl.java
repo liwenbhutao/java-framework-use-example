@@ -1,8 +1,9 @@
 package com.ht.test.spring.boot.mvc.service.impl;
 
 import com.google.common.base.Preconditions;
+import com.ht.common.spring.util.database.DynamicDataSourceConstant;
+import com.ht.common.spring.util.database.aop.DynamicDataSourceAnnotation;
 import com.ht.common.spring.util.database.aop.Read;
-import com.ht.common.spring.util.database.aop.Write;
 import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
 import com.ht.test.spring.boot.mvc.service.impl.dao.DomainDao;
@@ -36,7 +37,7 @@ public class DomainServiceImpl implements DomainService {
         return domain.getId();
     }
 
-    @Write
+    @DynamicDataSourceAnnotation(DynamicDataSourceConstant.WRITE_DATABASE)
     @Override
     public Domain loadById(final long id) {
         final Domain domain = this.domainDao.loadById(id);

@@ -1,10 +1,10 @@
 package com.ht.common.spring.util.database.aop;
 
-import com.ht.common.spring.util.aop.AnnotationDeepMethodMatcher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.ClassFilter;
 import org.springframework.aop.MethodMatcher;
 import org.springframework.aop.Pointcut;
+import org.springframework.aop.support.annotation.AnnotationMethodMatcher;
 
 import java.util.List;
 
@@ -46,7 +46,6 @@ public class DynamicDataSourcePackageFilterPointcut implements Pointcut {
 
     @Override
     public MethodMatcher getMethodMatcher() {
-        return new AnnotationDeepMethodMatcher(DynamicDataSourceAnnotation.class);
+        return new AnnotationMethodMatcher(DynamicDataSourceAnnotation.class);
     }
-
 }

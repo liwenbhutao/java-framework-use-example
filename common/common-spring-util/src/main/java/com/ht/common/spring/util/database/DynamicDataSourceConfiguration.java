@@ -88,10 +88,10 @@ public class DynamicDataSourceConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public PointcutAdvisor pointcutAdviser(final MethodInterceptor dataSourceAdvice) {
+    public PointcutAdvisor pointcutAdviser() {
         final DefaultBeanFactoryPointcutAdvisor advisor = new DefaultBeanFactoryPointcutAdvisor();
         advisor.setPointcut(dataSourcePointcut());
-        advisor.setAdvice(dataSourceAdvice);
+        advisor.setAdvice(dataSourceAdvice());
         return advisor;
     }
 
