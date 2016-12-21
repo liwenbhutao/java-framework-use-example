@@ -1,8 +1,8 @@
 package com.ht.test.spring.boot.mvc.service.impl;
 
-import com.coolqi.common.spring.util.database.aop.Read;
-import com.coolqi.common.spring.util.database.aop.Write;
 import com.google.common.base.Preconditions;
+import com.ht.common.spring.util.database.aop.Read;
+import com.ht.common.spring.util.database.aop.Write;
 import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
 import com.ht.test.spring.boot.mvc.service.impl.dao.DomainDao;

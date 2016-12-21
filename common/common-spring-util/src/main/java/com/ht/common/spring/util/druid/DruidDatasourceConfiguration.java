@@ -3,6 +3,7 @@ package com.ht.common.spring.util.druid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -36,11 +37,13 @@ public class DruidDatasourceConfiguration {
     @Autowired
     private DruidProperties druidProperties;
 
+    @ConditionalOnMissingBean(DataSourceProperties.class)
     @Bean
     public DataSourceProperties properties() {
         return this.druidProperties;
     }
 
+    @ConditionalOnMissingBean(DataSource.class)
     @Bean
     public DruidDataSourceFactory dataSource() {
         return new DruidDataSourceFactory(this.druidProperties);

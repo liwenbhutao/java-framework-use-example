@@ -19,6 +19,6 @@ import org.springframework.context.annotation.Configuration;
  * </pre>
  */
 @Configuration
-@ComponentScan("com.coolqi.common.spring.util")
+@ComponentScan("com.ht.common.spring.util")
 public class CommonSpringUtilAutoConfiration {
 }

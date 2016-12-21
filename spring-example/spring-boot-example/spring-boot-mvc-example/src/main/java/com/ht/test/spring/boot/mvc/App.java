@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @version 1.0
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.ht.test.spring.boot.mvc"})
+@ComponentScan(basePackages = {"com.ht.test.spring.boot.mvc", "com.ht.common.spring.util"})
 @MapperScan("com.ht.test.spring.boot.mvc.service.impl.dao")
 public class App /*extends SpringBootServletInitializer*/ {
     /*@Override

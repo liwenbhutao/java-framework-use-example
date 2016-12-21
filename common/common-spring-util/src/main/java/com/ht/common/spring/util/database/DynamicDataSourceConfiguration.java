@@ -1,6 +1,7 @@
 package com.ht.common.spring.util.database;
 
 import com.google.common.base.Strings;
+import com.ht.common.spring.util.druid.DruidDataSourceFactory;
 import com.ht.common.util.exception.HtPreconditions;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanFactoryUtils;
@@ -52,13 +53,13 @@ public class DynamicDataSourceConfiguration {
     @Bean
     @Primary
     @ConditionalOnMissingBean(AbstractRoutingDataSource.class)
-    public DataSource routeDataSource() {
-        final Map<String, DataSource> dataSourceMap =
-                BeanFactoryUtils.beansOfTypeIncludingAncestors(this.applicationContext, DataSource.class);
+    public DataSource routeDataSource() throws Exception {
+        final Map<String, DruidDataSourceFactory> dataSourceMap =
+                BeanFactoryUtils.beansOfTypeIncludingAncestors(this.applicationContext, DruidDataSourceFactory.class);
         final Map<Object, Object> targetDataSourceMap = new HashMap<>();
 
-        for (final Map.Entry<String, DataSource> entry : dataSourceMap.entrySet()) {
-            targetDataSourceMap.put(new DynamicDataSourceContext(entry.getKey()), entry.getValue());
+        for (final Map.Entry<String, DruidDataSourceFactory> entry : dataSourceMap.entrySet()) {
+            targetDataSourceMap.put(entry.getKey(), entry.getValue().getObject());
         }
         HtPreconditions.assertTrue(!dataSourceMap.isEmpty(), "DynamicDataSource is empty");
         final DynamicDataSource routingDataSource = new DynamicDataSource();
