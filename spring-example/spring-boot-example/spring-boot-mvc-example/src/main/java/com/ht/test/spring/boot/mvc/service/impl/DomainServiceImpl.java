@@ -7,6 +7,7 @@ import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
 import com.ht.test.spring.boot.mvc.service.impl.dao.DomainDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author hutao <hutao, hutao@email.com>
@@ -23,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * --------------------------------------------------
  * </pre>
  */
-//@Service
+@Service
 public class DomainServiceImpl implements DomainService {
     @Autowired
     private DomainDao domainDao;

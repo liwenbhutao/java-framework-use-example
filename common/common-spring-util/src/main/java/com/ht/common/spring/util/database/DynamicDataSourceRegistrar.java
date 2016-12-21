@@ -65,7 +65,7 @@ public class DynamicDataSourceRegistrar implements ImportBeanDefinitionRegistrar
                 final DruidProperties druidProperties = new DruidProperties();
                 bindProperties(druidProperties, prefix + "." + name, this.environment);
                 final BeanDefinitionBuilder bdb = BeanDefinitionBuilder.rootBeanDefinition(DruidDataSourceFactory.class)
-                        .addConstructorArgValue(druidProperties);
+                        .addConstructorArgValue(druidProperties).addConstructorArgValue(name);
                 final AbstractBeanDefinition beanDefinition = bdb.getBeanDefinition();
                 beanDefinition.addQualifier(new AutowireCandidateQualifier(Qualifier.class, name));
                 registry.registerBeanDefinition(name, beanDefinition);

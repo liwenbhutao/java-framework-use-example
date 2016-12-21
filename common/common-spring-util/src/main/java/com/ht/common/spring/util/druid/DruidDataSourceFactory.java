@@ -2,6 +2,7 @@ package com.ht.common.spring.util.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.google.common.base.Strings;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 
@@ -26,9 +27,13 @@ import java.sql.SQLException;
 @Slf4j
 public class DruidDataSourceFactory extends AbstractFactoryBean<DataSource> {
     private final DruidProperties druidProperties;
+    @Getter
+    private final String dateSourceName;
 
-    public DruidDataSourceFactory(final DruidProperties druidProperties) {
+    public DruidDataSourceFactory(final DruidProperties druidProperties,
+                                  final String dateSourceName) {
         this.druidProperties = druidProperties;
+        this.dateSourceName = dateSourceName;
     }
 
 

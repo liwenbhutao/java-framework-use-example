@@ -5,6 +5,7 @@ import com.ht.test.spring.boot.mvc.controller.helper.OwnerConsts;
 import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ import javax.validation.Valid;
  */
 @Controller
 public class IndexController {
-    //    @Autowired
+    @Autowired
     private DomainService domainService;
 
     /**

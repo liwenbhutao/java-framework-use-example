@@ -59,15 +59,15 @@ public class DynamicDataSourceConfiguration {
         final Map<Object, Object> targetDataSourceMap = new HashMap<>();
 
         for (final Map.Entry<String, DruidDataSourceFactory> entry : dataSourceMap.entrySet()) {
-            targetDataSourceMap.put(entry.getKey(), entry.getValue().getObject());
+            targetDataSourceMap.put(entry.getValue().getDateSourceName(), entry.getValue().getObject());
         }
         HtPreconditions.assertTrue(!dataSourceMap.isEmpty(), "DynamicDataSource is empty");
         final DynamicDataSource routingDataSource = new DynamicDataSource();
         routingDataSource.setTargetDataSources(targetDataSourceMap);
         if (!Strings.isNullOrEmpty(this.dynamicDataSourceProperties.getDefaultName())) {
-            routingDataSource.setDefaultTargetDataSource(dataSourceMap.get(this.dynamicDataSourceProperties.getDefaultName()));
+            routingDataSource.setDefaultTargetDataSource(targetDataSourceMap.get(this.dynamicDataSourceProperties.getDefaultName()));
         } else {
-            routingDataSource.setDefaultTargetDataSource(dataSourceMap.get(this.dynamicDataSourceProperties.getNames().get(0)));
+            routingDataSource.setDefaultTargetDataSource(targetDataSourceMap.get(this.dynamicDataSourceProperties.getNames().get(0)));
         }
         return routingDataSource;
     }

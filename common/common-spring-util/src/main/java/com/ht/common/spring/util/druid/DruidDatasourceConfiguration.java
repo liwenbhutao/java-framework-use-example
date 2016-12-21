@@ -46,6 +46,6 @@ public class DruidDatasourceConfiguration {
     @ConditionalOnMissingBean(DataSource.class)
     @Bean
     public DruidDataSourceFactory dataSource() {
-        return new DruidDataSourceFactory(this.druidProperties);
+        return new DruidDataSourceFactory(this.druidProperties, "");
     }
 }
