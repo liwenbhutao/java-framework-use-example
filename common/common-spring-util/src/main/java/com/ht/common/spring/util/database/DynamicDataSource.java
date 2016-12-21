@@ -1,5 +1,6 @@
 package com.ht.common.spring.util.database;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
@@ -17,9 +18,14 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
  * --------------------------------------------------
  * </pre>
  */
+@Slf4j
 public class DynamicDataSource extends AbstractRoutingDataSource {
     @Override
     protected Object determineCurrentLookupKey() {
-        return DynamicDataSourceContextHolder.getDynamicDataSourceName();
+        final String key = DynamicDataSourceContextHolder.getDynamicDataSourceName();
+        if (log.isDebugEnabled()) {
+            log.debug("DynamicDataSource key:{}", key);
+        }
+        return key;
     }
 }

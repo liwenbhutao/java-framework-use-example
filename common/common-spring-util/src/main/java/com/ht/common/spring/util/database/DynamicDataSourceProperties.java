@@ -30,7 +30,7 @@ public class DynamicDataSourceProperties {
     private List<String> names;
     @Value("${default:}")
     private String defaultName;
-    @Value("${basePackages:com.coolqi}")
+    @Value("${basePackages:}")
     private List<String> basePackages;
 
     public boolean hasNames() {

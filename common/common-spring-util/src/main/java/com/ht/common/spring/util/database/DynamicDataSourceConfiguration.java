@@ -1,11 +1,18 @@
 package com.ht.common.spring.util.database;
 
 import com.google.common.base.Strings;
+import com.ht.common.spring.util.database.aop.DynamicDataSourcePackageFilterPointcut;
+import com.ht.common.spring.util.database.aop.DynamicDataSourceRouterAdvice;
 import com.ht.common.spring.util.druid.DruidDataSourceFactory;
 import com.ht.common.util.exception.HtPreconditions;
 import lombok.extern.slf4j.Slf4j;
+import org.aopalliance.intercept.MethodInterceptor;
+import org.springframework.aop.Pointcut;
+import org.springframework.aop.PointcutAdvisor;
+import org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor;
 import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackages;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -18,6 +25,7 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -70,5 +78,30 @@ public class DynamicDataSourceConfiguration {
             routingDataSource.setDefaultTargetDataSource(targetDataSourceMap.get(this.dynamicDataSourceProperties.getNames().get(0)));
         }
         return routingDataSource;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public MethodInterceptor dataSourceAdvice() {
+        return new DynamicDataSourceRouterAdvice();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public PointcutAdvisor pointcutAdviser(final MethodInterceptor dataSourceAdvice) {
+        final DefaultBeanFactoryPointcutAdvisor advisor = new DefaultBeanFactoryPointcutAdvisor();
+        advisor.setPointcut(dataSourcePointcut());
+        advisor.setAdvice(dataSourceAdvice);
+        return advisor;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public Pointcut dataSourcePointcut() {
+        List<String> basePackages = this.dynamicDataSourceProperties.getBasePackages();
+        if (basePackages == null || basePackages.size() == 0) {
+            basePackages = AutoConfigurationPackages.get(this.applicationContext);
+        }
+        return new DynamicDataSourcePackageFilterPointcut(basePackages);
     }
 }
