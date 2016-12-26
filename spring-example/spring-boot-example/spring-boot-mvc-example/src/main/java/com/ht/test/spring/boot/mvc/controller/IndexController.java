@@ -2,6 +2,7 @@ package com.ht.test.spring.boot.mvc.controller;
 
 import com.ht.test.spring.boot.mvc.controller.dto.CreateDomainParamsDto;
 import com.ht.test.spring.boot.mvc.controller.helper.OwnerConsts;
+import com.ht.test.spring.boot.mvc.helper.Uid;
 import com.ht.test.spring.boot.mvc.service.DomainService;
 import com.ht.test.spring.boot.mvc.service.domain.Domain;
 import io.swagger.annotations.ApiOperation;
@@ -57,7 +58,8 @@ public class IndexController {
 
     @RequestMapping(value = "/domain/load/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Domain loadDomain(@PathVariable final long id, final HttpServletRequest request, final Model model) {
+    public Domain loadDomain(@PathVariable final long id, final HttpServletRequest request, final Model model,
+                             @Uid final long uid) {
         return this.domainService.loadById(id);
     }
 
